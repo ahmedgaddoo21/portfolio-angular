@@ -113,6 +113,7 @@ body.dark-mode textarea::placeholder {
     margin: 0 !important;
     gap: 30px;
     list-style: none;
+    overflow: visible !important; /* Hide vertical scrollbar arrows next to Contact */
   }
 
   .navmenu li {
@@ -232,4 +233,118 @@ body.dark-mode textarea::placeholder {
 
 body.dark-mode .btn-dark-mode {
   color: #ffd700 !important; /* Gold color for sun icon */
+}
+
+/* ==========================================
+   Footer Custom Styling
+   ========================================== */
+.footer {
+  background-color: #061129 !important; /* Deep dark navy */
+  color: #a3b3c9 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 60px 0 30px 0 !important;
+  font-size: 14px;
+}
+
+.footer .footer-top {
+  margin-bottom: 30px;
+}
+
+.footer h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff !important;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.footer h4::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-color);
+  bottom: 0;
+  left: 0;
+}
+
+/* On mobile, center the title underline */
+@media (max-width: 767px) {
+  .footer .footer-contact h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.footer .footer-about p {
+  line-height: 1.6;
+}
+
+.footer .sitename {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff !important;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  background: var(--accent-color);
+  color: #ffffff !important;
+}
+
+.footer .footer-quote .quote-wrapper {
+  padding: 15px;
+  border-left: 3px solid var(--accent-color);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0 8px 8px 0;
+  margin-top: 15px;
+}
+
+.footer .footer-quote .quote-text {
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: #f1f6fa !important;
+}
+
+.footer .footer-quote .quote-author {
+  font-size: 13px;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.footer .footer-contact p {
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.footer .footer-contact a {
+  color: #a3b3c9 !important;
+}
+
+.footer .footer-contact a:hover {
+  color: var(--accent-color) !important;
+}
+
+.footer .copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 25px;
+  color: #64748b !important;
+  margin-top: 20px;
 }
