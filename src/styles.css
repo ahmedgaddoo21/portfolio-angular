@@ -1,0 +1,235 @@
+/* Global styles for Ahmed Karam Portfolio */
+body {
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Contact Links styling */
+.contact-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #0563bb; /* Theme accent color */
+  text-decoration: underline;
+}
+
+/* ==========================================
+   Dark Mode variables & overrides
+   ========================================== */
+body.dark-mode {
+  --background-color: #0b1329; /* Deep dark blue */
+  --default-color: #d1dbe5;
+  --heading-color: #f1f6fa;
+  --surface-color: #17223b; /* Dark card surface */
+  --contrast-color: #0b1329;
+  
+  --nav-color: #d1dbe5;
+  --nav-hover-color: #38bdf8;
+  --nav-mobile-background-color: #17223b;
+  --nav-dropdown-background-color: #17223b;
+  --nav-dropdown-color: #94a3b8;
+  --nav-dropdown-hover-color: #f1f6fa;
+}
+
+/* Dark mode helpers */
+body.dark-mode .bg-white {
+  background-color: var(--surface-color) !important;
+}
+
+body.dark-mode .info-wrap,
+body.dark-mode .php-email-form {
+  background-color: var(--surface-color) !important;
+  border-color: #2a3a5c !important;
+}
+
+body.dark-mode .card,
+body.dark-mode .skill-card,
+body.dark-mode .service-item,
+body.dark-mode .experience-card,
+body.dark-mode .education-content,
+body.dark-mode .portfolio-entry,
+body.dark-mode .portfolio-entry .entry-image {
+  background-color: var(--surface-color) !important;
+  border-color: #2a3a5c !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #0b1329 !important;
+  color: #f1f6fa !important;
+  border-color: #2a3a5c !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* ==========================================
+   Horizontal Header & Navbar styling
+   ========================================== */
+.header {
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.scrolled .header {
+  background-color: var(--surface-color) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+}
+
+.header .sitename {
+  color: var(--heading-color) !important;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Desktop navbar layout */
+@media (min-width: 992px) {
+  .header {
+    padding: 20px 0;
+  }
+
+  .navmenu {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .navmenu ul {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 30px;
+    list-style: none;
+  }
+
+  .navmenu li {
+    padding: 0;
+  }
+
+  .navmenu a {
+    color: var(--nav-color) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 5px 0 !important;
+    position: relative;
+    display: inline-block !important;
+  }
+
+  .navmenu a:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+  }
+
+  .navmenu a:hover:after,
+  .navmenu .active:after {
+    width: 100%;
+  }
+
+  .navmenu a:hover,
+  .navmenu .active {
+    color: var(--accent-color) !important;
+  }
+}
+
+/* Mobile Navbar horizontal scrollable layout */
+@media (max-width: 991px) {
+  .header {
+    background-color: var(--surface-color) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  .header .container-fluid {
+    flex-wrap: wrap; /* Allow wrapping so menu goes to second row */
+  }
+
+  .navmenu {
+    position: static !important;
+    width: 100% !important;
+    order: 3; /* Push to the next row */
+    margin-top: 10px;
+    background: none !important;
+    overflow-x: auto !important; /* Horizontally scrollable */
+    -webkit-overflow-scrolling: touch;
+    display: block !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Hide scrollbar for cleaner look */
+  .navmenu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navmenu ul {
+    display: flex !important;
+    flex-direction: row !important;
+    padding: 5px 0 !important;
+    margin: 0 !important;
+    list-style: none;
+    gap: 12px;
+    justify-content: flex-start;
+    width: max-content; /* Ensure full content width for scrolling */
+  }
+
+  .navmenu a {
+    color: var(--nav-color) !important;
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+    border-radius: 20px;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 94%);
+    display: block;
+  }
+
+  .navmenu a:hover,
+  .navmenu .active {
+    color: #ffffff !important;
+    background-color: var(--accent-color) !important;
+  }
+}
+
+/* Dark mode toggle styling */
+.btn-dark-mode {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--nav-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dark-mode:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+}
+
+body.dark-mode .btn-dark-mode {
+  color: #ffd700 !important; /* Gold color for sun icon */
+}
