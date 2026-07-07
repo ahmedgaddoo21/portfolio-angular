@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#061226"/>
+  <text x="16" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="15" letter-spacing="-0.5" text-anchor="middle">
+    <tspan fill="#1e90ff">A</tspan><tspan fill="#ffffff">K</tspan>
+  </text>
+</svg>
