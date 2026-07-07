@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 declare var AOS: any;
 declare var Typed: any;
@@ -14,7 +14,33 @@ declare var Swiper: any;
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements AfterViewInit {
+export class App implements OnInit, AfterViewInit {
+  isDarkMode = false;
+
+  ngOnInit() {
+    if (typeof window !== 'undefined') {
+      this.isDarkMode = localStorage.getItem('theme') === 'dark';
+      this.updateTheme();
+    }
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+      this.updateTheme();
+    }
+  }
+
+  updateTheme() {
+    if (typeof document !== 'undefined') {
+      if (this.isDarkMode) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+  }
 
   ngAfterViewInit() {
     // 1. Init AOS (Animate on Scroll)
@@ -167,38 +193,5 @@ export class App implements AfterViewInit {
     window.addEventListener('scroll', navmenuScrollspy);
     navmenuScrollspy();
 
-    // 11. Dark Mode Toggle
-    const darkModeToggleBtn = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    if (localStorage.getItem('theme') === 'dark') {
-      body.classList.add('dark-mode');
-      const icon = darkModeToggleBtn?.querySelector('i');
-      if (icon) {
-        icon.classList.remove('bi-moon-stars');
-        icon.classList.add('bi-sun');
-      }
-    }
-
-    if (darkModeToggleBtn) {
-      darkModeToggleBtn.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        const icon = darkModeToggleBtn.querySelector('i');
-        
-        if (body.classList.contains('dark-mode')) {
-          localStorage.setItem('theme', 'dark');
-          if (icon) {
-            icon.classList.remove('bi-moon-stars');
-            icon.classList.add('bi-sun');
-          }
-        } else {
-          localStorage.setItem('theme', 'light');
-          if (icon) {
-            icon.classList.remove('bi-sun');
-            icon.classList.add('bi-moon-stars');
-          }
-        }
-      });
-    }
   }
 }
