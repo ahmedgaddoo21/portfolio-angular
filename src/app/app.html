@@ -769,8 +769,7 @@
         </div>
 
         <div class="col-lg-7">
-          <form name="contact" method="POST" data-netlify="true" onsubmit="event.preventDefault(); const form = this; const data = new URLSearchParams(new FormData(form)); fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() }).then(() => { alert('Thank you! Your message has been sent successfully.'); form.reset(); }).catch((error) => { alert('Oops! There was an error sending your message. Please try again.'); console.error(error); });" class="php-email-form bg-white p-5 rounded border border-slate-100" data-aos="fade-up" data-aos-delay="200">
-            <input type="hidden" name="form-name" value="contact">
+          <form onsubmit="event.preventDefault(); const form = this; const data = { name: form.name.value, email: form.email.value, _replyto: form.email.value, _subject: 'Contact Form: ' + form.subject.value, message: form.message.value }; fetch('https://formsubmit.co/ajax/gad56226@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }).then(res => res.json()).then(res => { if(res.success === 'true' || res.success === true) { alert('Thank you! Your message has been sent successfully.'); form.reset(); } else { alert(res.message || 'Oops! Something went wrong. Please try again.'); } }).catch((error) => { alert('Oops! There was an error sending your message. Please try again.'); console.error(error); });" class="php-email-form bg-white p-5 rounded border border-slate-100" data-aos="fade-up" data-aos-delay="200">
             <div class="row gy-4">
 
               <div class="col-md-6">
