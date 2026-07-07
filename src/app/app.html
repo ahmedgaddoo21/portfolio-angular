@@ -769,7 +769,9 @@
         </div>
 
         <div class="col-lg-7">
-          <form onsubmit="event.preventDefault(); const form = this; const data = { name: form.name.value, email: form.email.value, _replyto: form.email.value, _subject: 'Contact Form: ' + form.subject.value, message: form.message.value }; fetch('https://formsubmit.co/ajax/gad56226@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) }).then(res => res.json()).then(res => { if(res.success === 'true' || res.success === true) { alert('Thank you! Your message has been sent successfully.'); form.reset(); } else { alert(res.message || 'Oops! Something went wrong. Please try again.'); } }).catch((error) => { alert('Oops! There was an error sending your message. Please try again.'); console.error(error); });" class="php-email-form bg-white p-5 rounded border border-slate-100" data-aos="fade-up" data-aos-delay="200">
+          <form onsubmit="event.preventDefault(); const form = this; const data = new FormData(form); fetch('https://api.web3forms.com/submit', { method: 'POST', body: data }).then(res => res.json()).then(res => { if(res.success) { alert('Thank you! Your message has been sent successfully.'); form.reset(); } else { alert(res.message || 'Oops! Something went wrong. Please check your Access Key.'); } }).catch((error) => { alert('Oops! There was an error sending your message. Please try again.'); console.error(error); });" class="php-email-form bg-white p-5 rounded border border-slate-100" data-aos="fade-up" data-aos-delay="200">
+            <!-- Web3Forms Access Key for direct email notifications to gad56226@gmail.com -->
+            <input type="hidden" name="access_key" value="087e70d3-de63-4e0a-84e2-18b74a98bcac">
             <div class="row gy-4">
 
               <div class="col-md-6">
